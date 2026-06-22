@@ -7,6 +7,7 @@ import { AIDiscovery } from './components/AIDiscovery';
 import { SmartMap } from './components/SmartMap';
 import { ConversationalSection } from './components/ConversationalSection';
 import { FeatureSection } from './components/FeatureSection';
+import { PricingSection } from './components/PricingSection';
 import { Footer } from './components/Footer';
 import { AIAssistant } from './components/AIAssistant';
 import { SearchResults } from './pages/SearchResults';
@@ -109,6 +110,7 @@ function App() {
           <SmartMap onSelectArea={() => handleSearch('Hotels in Abidjan for business travelers')} />
           <ConversationalSection />
           <FeatureSection />
+          <PricingSection />
         </>
       )}
 
