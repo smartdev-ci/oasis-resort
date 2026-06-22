@@ -13,7 +13,7 @@ export function Logo({ size = 'md', variant = 'default', showText = true }: Logo
     <div className="flex items-center gap-2.5">
       <img
         src="/Logo_oasisressort.png"
-        alt="Oasis Resort"
+        alt="Oasis Ressort"
         className={`${imgSizeMap[size]} w-auto object-contain flex-shrink-0 ${variant === 'light' ? 'brightness-0 invert' : ''}`}
       />
       {showText && (

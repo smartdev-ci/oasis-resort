@@ -1,5 +1,5 @@
 {
-  "name": "Oasis Resort",
+  "name": "Oasis Ressort",
   "short_name": "OasisResort",
   "description": "Votre compagnon IA pour voyager en Afrique. Réservez des hôtels, villas et découvrez les meilleurs établissements en Côte d'Ivoire et dans 8 pays africains.",
   "start_url": "/",
@@ -41,14 +41,14 @@
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "Oasis Resort - Accueil"
+      "label": "Oasis Ressort - Accueil"
     },
     {
       "src": "screenshot-2.png",
       "sizes": "720x1280",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "Oasis Resort - Recherche"
+      "label": "Oasis Ressort - Recherche"
     }
   ],
   

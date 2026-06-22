@@ -1,4 +1,4 @@
-# 🚀 Guide PWA pour Oasis Resort
+# 🚀 Guide PWA pour Oasis Ressort
 
 Ce guide explique comment configurer et générer toutes les ressources nécessaires pour une PWA (Progressive Web App) compatible Android et iOS.
 
@@ -80,7 +80,7 @@ Créez un fichier `public/offline.html` pour afficher une page personnalisée lo
 1. Allez sur https://realfavicongenerator.net/
 2. Upload votre logo (utilisez `public/Logo_oasisressort.png`)
 3. Sélectionnez les options :
-   - Nom: "Oasis Resort"
+   - Nom: "Oasis Ressort"
    - Couleur de thème: `#1A3A2A`
    - Couleur de fond: `#FAF8F3`
    - Affichage: Standalone
@@ -122,7 +122,7 @@ Cela générera toutes les icônes nécessaires dans le dossier `public/`.
 1. **Format** : PNG
 2. **Fond transparent** ou couleur de fond `#FAF8F3`
 3. **Couleurs** : Utilisez les couleurs de la marque (vert `#1A3A2A`, or `#E9A825`)
-4. **Style** : Logo Oasis Resort centré avec un léger padding
+4. **Style** : Logo Oasis Ressort centré avec un léger padding
 
 #### Exemple de Structure :
 ```
@@ -160,8 +160,8 @@ Les splash screens pour iOS doivent être des images **portrait** avec les dimen
 
 3. **Spécifications** :
    - **Couleur de fond** : `#FAF8F3` (crème)
-   - **Logo** : Logo Oasis Resort centré
-   - **Éléments** : Peut inclure le nom "Oasis Resort" et un slogan
+   - **Logo** : Logo Oasis Ressort centré
+   - **Éléments** : Peut inclure le nom "Oasis Ressort" et un slogan
 
 ---
 
@@ -173,7 +173,7 @@ Le fichier `public/manifest.webmanifest` contient toutes les configurations néc
 
 ```json
 {
-  "name": "Oasis Resort",
+  "name": "Oasis Ressort",
   "short_name": "OasisResort",
   "description": "Votre compagnon IA pour voyager en Afrique",
   "start_url": "/",
@@ -248,7 +248,7 @@ Les couleurs sont définies dans :
 
 ### 2. Noms
 
-- **Name** : "Oasis Resort" (affiché dans le menu des applications)
+- **Name** : "Oasis Ressort" (affiché dans le menu des applications)
 - **Short Name** : "OasisResort" (affiché sous l'icône)
 
 ### 3. Mode d'Affichage

@@ -177,7 +177,7 @@ async function generateShortcutIcon(outputPath, width, height, emoji) {
 
 // Fonction principale
 async function main() {
-  console.log('🚀 Génération des assets PWA pour Oasis Resort...\n');
+  console.log('🚀 Génération des assets PWA pour Oasis Ressort...\n');
   
   // Vérifier que le logo source existe
   if (!fs.existsSync(CONFIG.sourceLogo)) {

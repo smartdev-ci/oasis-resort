@@ -1,15 +1,15 @@
-# 🚀 Oasis Resort PWA
+# 🚀 Oasis Ressort PWA
 
-Bienvenue dans la configuration PWA (Progressive Web App) pour Oasis Resort !
+Bienvenue dans la configuration PWA (Progressive Web App) pour Oasis Ressort !
 
 ---
 
 ## ✅ Ce qui est déjà configuré
 
-Votre application Oasis Resort est maintenant une **PWA complète** avec :
+Votre application Oasis Ressort est maintenant une **PWA complète** avec :
 
 ### 1. **Manifest Web App** (`public/manifest.webmanifest`)
-- Nom : "Oasis Resort"
+- Nom : "Oasis Ressort"
 - Icônes pour Android et iOS
 - Shortcuts pour un accès rapide
 - Configuration des couleurs (#1A3A2A)
@@ -211,7 +211,7 @@ Ouvrez http://localhost:5173 dans Chrome ou Edge.
 
 ```json
 {
-  "name": "Oasis Resort",
+  "name": "Oasis Ressort",
   "short_name": "OasisResort",
   "description": "Votre compagnon IA pour voyager en Afrique",
   "start_url": "/",
@@ -236,7 +236,7 @@ Les couleurs sont définies dans :
 - `index.html` : meta tags
 - `vite.config.ts` : configuration PWA
 
-**Couleurs de la marque Oasis Resort** :
+**Couleurs de la marque Oasis Ressort** :
 - Vert principal : `#1A3A2A`
 - Vert clair : `#40916C`
 - Vert émeraude : `#10B981`
@@ -341,7 +341,7 @@ Déployez le contenu du dossier `dist/` sur :
 
 ## 🎉 Votre PWA est prête !
 
-Une fois toutes les images générées et placées dans `public/`, votre application Oasis Resort sera une **PWA 100% fonctionnelle** sur Android et iOS !
+Une fois toutes les images générées et placées dans `public/`, votre application Oasis Ressort sera une **PWA 100% fonctionnelle** sur Android et iOS !
 
 Les utilisateurs pourront :
 - Installer l'application sur leur écran d'accueil

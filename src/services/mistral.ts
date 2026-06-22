@@ -5,8 +5,8 @@
 // API endpoint for Mistral chat completion
 const MISTRAL_API_URL = 'https://api.mistral.ai/v1/chat/completions';
 
-// System prompt for the Oasis Resort AI assistant
-const SYSTEM_PROMPT_FR = `Tu es l'assistant IA d'Oasis Resort, la plateforme de réservation de voyage en Afrique.
+// System prompt for the Oasis Ressort AI assistant
+const SYSTEM_PROMPT_FR = `Tu es l'assistant IA d'Oasis Ressort, la plateforme de réservation de voyage en Afrique.
 Ton rôle est d'aider les utilisateurs à trouver les meilleurs hébergements, restaurants et activités en Afrique.
 
 Règles à suivre :
@@ -24,7 +24,7 @@ Règles de formatage :
 - Utilise des sections claires avec des titres en gras
 
 Contexte :
-- Oasis Resort opère en Côte d'Ivoire et dans 8 pays africains
+- Oasis Ressort opère en Côte d'Ivoire et dans 8 pays africains
 - Nous proposons des hôtels, villas, restaurants et activités touristiques
 - Paiements acceptés : Orange Money, MTN Money, Moov Money, Wave, cartes bancaires
 - Service 24/7 avec concierge IA
@@ -39,7 +39,7 @@ J'ai trouvé 5 hôtels à Abidjan qui correspondent à vos critères.
 - [Proche aéroport]
 `;
 
-const SYSTEM_PROMPT_EN = `You are the AI assistant for Oasis Resort, the Africa travel booking platform.
+const SYSTEM_PROMPT_EN = `You are the AI assistant for Oasis Ressort, the Africa travel booking platform.
 Your role is to help users find the best accommodations, restaurants, and activities across Africa.
 
 Rules to follow:
@@ -57,7 +57,7 @@ Formatting rules:
 - Use clear sections with bold headings
 
 Context:
-- Oasis Resort operates in Ivory Coast and 8 African countries
+- Oasis Ressort operates in Ivory Coast and 8 African countries
 - We offer hotels, villas, restaurants, and tourist activities
 - Accepted payments: Orange Money, MTN Money, Moov Money, Wave, credit cards
 - 24/7 service with AI concierge

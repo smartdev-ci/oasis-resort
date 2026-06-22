@@ -1,14 +1,14 @@
-# ✅ Configuration PWA Complète pour Oasis Resort
+# ✅ Configuration PWA Complète pour Oasis Ressort
 
 **Date** : 22 juin 2026  
-**Projet** : Oasis Resort - Plateforme de réservation de voyage en Afrique  
+**Projet** : Oasis Ressort - Plateforme de réservation de voyage en Afrique  
 **Type** : Progressive Web App (PWA) compatible Android et iOS
 
 ---
 
 ## 🎯 Objectif
 
-Transformer l'application Oasis Resort en une **PWA (Progressive Web App)** permettant :
+Transformer l'application Oasis Ressort en une **PWA (Progressive Web App)** permettant :
 - Installation sur Android et iOS
 - Fonctionnement partiel hors ligne
 - Expérience utilisateur native
@@ -49,7 +49,7 @@ npm install vite-plugin-pwa -D
 **Configuration** :
 ```json
 {
-  "name": "Oasis Resort",
+  "name": "Oasis Ressort",
   "short_name": "OasisResort",
   "description": "Votre compagnon IA pour voyager en Afrique",
   "start_url": "/",
@@ -111,12 +111,12 @@ npm install vite-plugin-pwa -D
 
 3. **Meta Tags de Base** :
    ```html
-   <meta name="application-name" content="Oasis Resort" />
+   <meta name="application-name" content="Oasis Ressort" />
    <meta name="msapplication-TileColor" content="#1A3A2A" />
    <meta name="mobile-web-app-capable" content="yes" />
    <meta name="apple-mobile-web-app-capable" content="yes" />
    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-   <meta name="apple-mobile-web-app-title" content="Oasis Resort" />
+   <meta name="apple-mobile-web-app-title" content="Oasis Ressort" />
    ```
 
 4. **Open Graph et Twitter Cards** :
@@ -132,7 +132,7 @@ npm install vite-plugin-pwa -D
 ### 6. **Page Hors Ligne** (`public/offline.html`)
 
 **Contenu** :
-- Design personnalisé avec le thème Oasis Resort
+- Design personnalisé avec le thème Oasis Ressort
 - Icône 🌿
 - Titre : "Vous êtes hors ligne"
 - Description des fonctionnalités disponibles/indisponibles
@@ -294,7 +294,7 @@ Ouvrir http://localhost:5173 dans Chrome/Edge
 |---------------|---------|-----|---------|
 | Installation | ✅ | ✅ | Popup automatique / "Partager > écran d'accueil" |
 | Icône personnalisée | ✅ | ✅ | À générer et placer dans `public/` |
-| Nom personnalisé | ✅ | ✅ | "Oasis Resort" |
+| Nom personnalisé | ✅ | ✅ | "Oasis Ressort" |
 | Couleurs de thème | ✅ | ✅ | `#1A3A2A` / `#FAF8F3` |
 | Splash screens | ❌ | ✅ | À générer pour iOS |
 | Mode standalone | ✅ | ✅ | Sans barre d'adresse |
@@ -320,7 +320,7 @@ Ouvrir http://localhost:5173 dans Chrome/Edge
 ### Android (Chrome, Edge, Firefox)
 
 ✅ **Installation** :
-- Popup automatique "Installer Oasis Resort"
+- Popup automatique "Installer Oasis Ressort"
 - Bannière personnalisée avec boutons
 - Icône dans le launcher
 
@@ -408,12 +408,12 @@ Ouvrir http://localhost:5173 dans Chrome/Edge
 
 ## ✨ Résultat Final
 
-Une fois toutes les icônes générées, votre application Oasis Resort sera :
+Une fois toutes les icônes générées, votre application Oasis Ressort sera :
 
 ### 📱 Sur Android :
 - ✅ Installable comme une application native
 - ✅ Icône dans le launcher
-- ✅ Nom "Oasis Resort"
+- ✅ Nom "Oasis Ressort"
 - ✅ Couleurs de thème appliquées
 - ✅ Fonctionne hors ligne (partiellement)
 - ✅ Mises à jour automatiques
@@ -451,4 +451,4 @@ Pour toute question ou problème :
 
 ---
 
-*Généré le 22 juin 2026 pour le projet Oasis Resort*
+*Généré le 22 juin 2026 pour le projet Oasis Ressort*

@@ -3,7 +3,7 @@ export type Locale = 'fr' | 'en';
 export const translations = {
   fr: {
     // Brand
-    brand: 'Oasis Resort',
+    brand: 'Oasis Ressort',
     tagline: 'Votre compagnon IA pour voyager en Afrique',
 
     // Header / Nav
@@ -75,7 +75,7 @@ export const translations = {
     conv_online: 'En ligne',
 
     // Feature section
-    feat_badge: 'Pourquoi Oasis Resort',
+    feat_badge: 'Pourquoi Oasis Ressort',
     feat_title: 'La façon intelligente de voyager en Afrique',
     feat_subtitle: 'Construit de zéro avec l\'IA au cœur — pas ajoutée comme une fonctionnalité.',
     feat_f1_title: 'Une IA qui comprend l\'intention',
@@ -89,7 +89,7 @@ export const translations = {
     feat_f5_title: 'Concierge IA disponible 24h/24',
     feat_f5_desc: 'Du transfert aéroport aux réservations de restaurant, votre assistant IA reste avec vous tout au long du voyage.',
     feat_f6_title: 'Accès multi-plateforme',
-    feat_f6_desc: 'Rejoignez votre concierge sur le web, l\'application mobile ou WhatsApp. Où que vous soyez, Oasis Resort est là.',
+    feat_f6_desc: 'Rejoignez votre concierge sur le web, l\'application mobile ou WhatsApp. Où que vous soyez, Oasis Ressort est là.',
 
     // Property card
     card_book: 'Réserver',
@@ -185,7 +185,7 @@ export const translations = {
     checkout_card_cvc: 'CVV',
     checkout_mobile_placeholder: 'Numéro Mobile Money (ex. +225 07 00 00 00 00)',
     checkout_mobile_hint: 'Vous recevrez une demande de confirmation sur votre téléphone pour approuver le paiement.',
-    checkout_security: 'Les paiements sont chiffrés et sécurisés. Oasis Resort ne stocke jamais vos coordonnées bancaires.',
+    checkout_security: 'Les paiements sont chiffrés et sécurisés. Oasis Ressort ne stocke jamais vos coordonnées bancaires.',
     checkout_continue: 'Continuer',
     checkout_pay: 'Payer',
     checkout_processing: 'Traitement en cours...',
@@ -269,7 +269,7 @@ export const translations = {
     service_sim_desc: 'Recevez une carte SIM avec data à votre hôtel. Orange ou MTN disponible.',
 
     // AI Assistant
-    ai_greeting: 'Bonjour, je suis votre compagnon IA de voyage Oasis Resort. Décrivez le voyage dont vous rêvez et je trouverai les séjours parfaits en Afrique.',
+    ai_greeting: 'Bonjour, je suis votre compagnon IA de voyage Oasis Ressort. Décrivez le voyage dont vous rêvez et je trouverai les séjours parfaits en Afrique.',
     ai_online: 'En ligne · Compagnon IA de voyage',
     ai_found: 'J\'ai trouvé',
     ai_options_airport: 'options correspondant à vos préférences. Voici les meilleures options basées sur les vues océan, l\'accès piscine et le prix.',
@@ -291,7 +291,7 @@ export const translations = {
     ai_chip_romantic: 'Romantique',
     ai_chip_family_vacation: 'Vacances en famille',
     ai_placeholder: 'Posez une question sur votre voyage...',
-    ai_footer: 'L\'IA suggère séjours, activités et plus. Propulsé par l\'intelligence Oasis Resort.',
+    ai_footer: 'L\'IA suggère séjours, activités et plus. Propulsé par l\'intelligence Oasis Ressort.',
     ai_float_title: 'Demander à l\'IA Oasis',
     ai_float_subtitle: 'Toujours disponible',
 
@@ -312,12 +312,12 @@ export const translations = {
     footer_company: 'Entreprise',
     footer_support: 'Support',
     footer_discover_links: ['Villes populaires', 'Escapades plage', 'Hôtels d\'affaires', 'Villas familiales', 'Séjours nomades digitaux'],
-    footer_company_links: ['À propos d\'Oasis Resort', 'Carrières', 'Presse', 'Partenaires', 'Blog'],
+    footer_company_links: ['À propos d\'Oasis Ressort', 'Carrières', 'Presse', 'Partenaires', 'Blog'],
     footer_support_links: ['Centre d\'aide', 'Sécurité & Confiance', 'Annulation', 'Méthodes de paiement', 'Contact'],
     footer_encrypted: 'Paiements chiffrés',
     footer_countries: '8+ pays africains',
     footer_concierge: 'Concierge IA 24h/24',
-    footer_rights: '© 2026 Oasis Resort. Tous droits réservés.',
+    footer_rights: '© 2026 Oasis Ressort. Tous droits réservés.',
     footer_privacy: 'Confidentialité',
     footer_terms: 'Conditions',
     footer_cookies: 'Cookies',
@@ -330,7 +330,7 @@ export const translations = {
     nav_profile: 'Profil',
 
     // Sign In page
-    signin_title: 'Bienvenue chez Oasis Resort',
+    signin_title: 'Bienvenue chez Oasis Ressort',
     signin_subtitle: 'Connectez-vous pour accéder à votre compagnon IA de voyage',
     signin_email: 'Adresse e-mail',
     signin_password: 'Mot de passe',
@@ -347,7 +347,7 @@ export const translations = {
 
     // Sign Up page
     signup_title: 'Créer votre compte',
-    signup_subtitle: 'Rejoignez Oasis Resort et commencez à voyager intelligemment en Afrique',
+    signup_subtitle: 'Rejoignez Oasis Ressort et commencez à voyager intelligemment en Afrique',
     signup_name: 'Nom complet',
     signup_email: 'Adresse e-mail',
     signup_password: 'Mot de passe',
@@ -466,7 +466,7 @@ export const translations = {
 
   en: {
     // Brand
-    brand: 'Oasis Resort',
+    brand: 'Oasis Ressort',
     tagline: 'Your AI travel companion for Africa',
 
     // Header / Nav
@@ -538,7 +538,7 @@ export const translations = {
     conv_online: 'Online',
 
     // Feature section
-    feat_badge: 'Why Oasis Resort',
+    feat_badge: 'Why Oasis Ressort',
     feat_title: 'The intelligent way to travel through Africa',
     feat_subtitle: 'Built from the ground up with AI at the core — not bolted on as a feature.',
     feat_f1_title: 'AI that understands intent',
@@ -552,7 +552,7 @@ export const translations = {
     feat_f5_title: 'Always-on AI concierge',
     feat_f5_desc: 'From airport transfer to dinner reservations, your AI assistant stays with you throughout the trip.',
     feat_f6_title: 'Multi-platform access',
-    feat_f6_desc: 'Reach your concierge on web, mobile app, or WhatsApp. Wherever you are, Oasis Resort is there.',
+    feat_f6_desc: 'Reach your concierge on web, mobile app, or WhatsApp. Wherever you are, Oasis Ressort is there.',
 
     // Property card
     card_book: 'Book now',
@@ -648,7 +648,7 @@ export const translations = {
     checkout_card_cvc: 'CVC',
     checkout_mobile_placeholder: 'Mobile money number (e.g. +225 07 00 00 00 00)',
     checkout_mobile_hint: 'You\'ll receive a confirmation prompt on your phone to approve the payment.',
-    checkout_security: 'Payments are encrypted and secured. Oasis Resort never stores your card or PIN details.',
+    checkout_security: 'Payments are encrypted and secured. Oasis Ressort never stores your card or PIN details.',
     checkout_continue: 'Continue',
     checkout_pay: 'Pay',
     checkout_processing: 'Processing payment...',
@@ -732,7 +732,7 @@ export const translations = {
     service_sim_desc: 'Get a local data SIM card delivered to your hotel. Orange or MTN available.',
 
     // AI Assistant
-    ai_greeting: 'Hi, I\'m your Oasis Resort AI travel companion. Describe the trip you\'re dreaming of and I\'ll find the perfect stays across Africa.',
+    ai_greeting: 'Hi, I\'m your Oasis Ressort AI travel companion. Describe the trip you\'re dreaming of and I\'ll find the perfect stays across Africa.',
     ai_online: 'Online · AI travel companion',
     ai_found: 'I found',
     ai_options_airport: 'options matching your preferences. Here are the top picks based on ocean views, pool access, and price.',
@@ -754,7 +754,7 @@ export const translations = {
     ai_chip_romantic: 'Romantic weekend',
     ai_chip_family_vacation: 'Family vacation',
     ai_placeholder: 'Ask anything about your trip...',
-    ai_footer: 'AI suggests stays, activities & more. Powered by Oasis Resort intelligence.',
+    ai_footer: 'AI suggests stays, activities & more. Powered by Oasis Ressort intelligence.',
     ai_float_title: 'Ask Oasis AI',
     ai_float_subtitle: 'Always here to help',
 
@@ -775,12 +775,12 @@ export const translations = {
     footer_company: 'Company',
     footer_support: 'Support',
     footer_discover_links: ['Popular cities', 'Beach getaways', 'Business hotels', 'Family villas', 'Digital nomad stays'],
-    footer_company_links: ['About Oasis Resort', 'Careers', 'Press', 'Partners', 'Blog'],
+    footer_company_links: ['About Oasis Ressort', 'Careers', 'Press', 'Partners', 'Blog'],
     footer_support_links: ['Help Center', 'Trust & Safety', 'Cancellation', 'Payment methods', 'Contact'],
     footer_encrypted: 'Encrypted payments',
     footer_countries: '8+ African countries',
     footer_concierge: '24/7 AI concierge',
-    footer_rights: '© 2026 Oasis Resort. All rights reserved.',
+    footer_rights: '© 2026 Oasis Ressort. All rights reserved.',
     footer_privacy: 'Privacy',
     footer_terms: 'Terms',
     footer_cookies: 'Cookies',
@@ -793,7 +793,7 @@ export const translations = {
     nav_profile: 'Profile',
 
     // Sign In page
-    signin_title: 'Welcome to Oasis Resort',
+    signin_title: 'Welcome to Oasis Ressort',
     signin_subtitle: 'Sign in to access your AI travel companion',
     signin_email: 'Email address',
     signin_password: 'Password',
@@ -810,7 +810,7 @@ export const translations = {
 
     // Sign Up page
     signup_title: 'Create your account',
-    signup_subtitle: 'Join Oasis Resort and start traveling smart across Africa',
+    signup_subtitle: 'Join Oasis Ressort and start traveling smart across Africa',
     signup_name: 'Full name',
     signup_email: 'Email address',
     signup_password: 'Password',

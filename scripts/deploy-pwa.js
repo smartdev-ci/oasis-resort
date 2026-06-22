@@ -226,7 +226,7 @@ function checkBuild() {
 // Fonction principale
 function main() {
   console.log('='.repeat(60));
-  console.log('🚀 Oasis Resort PWA - Vérification de déploiement');
+  console.log('🚀 Oasis Ressort PWA - Vérification de déploiement');
   console.log('='.repeat(60));
   console.log();
   
@@ -266,7 +266,7 @@ function main() {
   if (overallSuccess && pwaConfig.allGood) {
     console.log('✅ TOUT EST PRÊT !');
     console.log('='.repeat(60));
-    console.log('\n🎉 Votre PWA Oasis Resort est complètement configurée !');
+    console.log('\n🎉 Votre PWA Oasis Ressort est complètement configurée !');
     console.log('\n📝 Prochaines étapes :');
     console.log('   1. Générez les icônes manquantes (voir ci-dessus)');
     console.log('   2. Exécutez : npm run build');

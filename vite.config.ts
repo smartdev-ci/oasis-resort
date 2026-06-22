@@ -16,7 +16,7 @@ export default defineConfig({
       
       // Configuration du manifest
       manifest: {
-        name: 'Oasis Resort',
+        name: 'Oasis Ressort',
         short_name: 'OasisResort',
         description: 'Votre compagnon IA pour voyager en Afrique',
         theme_color: '#1A3A2A',
