@@ -1,4 +1,4 @@
-import { Home, Compass, Plane, MessageCircle, User, Map } from 'lucide-react';
+import { Home, Compass, Plane, User, Map } from 'lucide-react';
 import { useI18n } from '../../i18n';
 
 interface BottomNavProps {
@@ -14,43 +14,34 @@ export function BottomNav({ active, onNavigate, onOpenChat }: BottomNavProps) {
     { id: 'home', icon: Home, label: t('nav_home') },
     { id: 'discover', icon: Map, label: t('nav_discover') },
     { id: 'trips', icon: Plane, label: t('nav_trips') },
-    { id: 'messages', icon: MessageCircle, label: t('nav_messages') },
     { id: 'profile', icon: User, label: t('nav_profile') },
   ];
 
   return (
     <nav className="md:hidden fixed bottom-0 inset-x-0 z-40 glass border-t border-white/40">
       <div className="flex items-center justify-around px-2 py-2">
-        {items.map((item, idx) => {
-          const Icon = item.icon;
-          const isActive = active === item.id;
-
-          if (idx === 2) {
-            return (
-              <div key="center-group" className="flex items-center gap-0">
-                <NavItem key={item.id} id={item.id} icon={item.icon} label={item.label} isActive={isActive} onNavigate={onNavigate} />
-                {/* AI center button */}
-                <button
-                  onClick={onOpenChat}
-                  className="flex flex-col items-center -mt-6 px-2"
-                  aria-label="Open AI assistant"
-                >
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-400 flex items-center justify-center shadow-soft-2xl ring-4 ring-cream active:scale-95 transition-transform">
-                    <Compass className="w-5 h-5 text-white" />
-                  </div>
-                </button>
-              </div>
-            );
-          }
-          if (idx === 3) {
-            return (
-              <NavItem key={item.id} id={item.id} icon={Icon} label={item.label} isActive={isActive} onNavigate={onNavigate} />
-            );
-          }
-          return (
-            <NavItem key={item.id} id={item.id} icon={Icon} label={item.label} isActive={isActive} onNavigate={onNavigate} />
-          );
-        })}
+        {/* Home */}
+        <NavItem id="home" icon={Home} label={t('nav_home')} isActive={active === 'home'} onNavigate={onNavigate} />
+        
+        {/* Discover */}
+        <NavItem id="discover" icon={Map} label={t('nav_discover')} isActive={active === 'discover'} onNavigate={onNavigate} />
+        
+        {/* AI Center Button */}
+        <button
+          onClick={onOpenChat}
+          className="flex flex-col items-center -mt-6 px-2"
+          aria-label="Open AI assistant"
+        >
+          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-400 flex items-center justify-center shadow-soft-2xl ring-4 ring-cream active:scale-95 transition-transform">
+            <Compass className="w-5 h-5 text-white" />
+          </div>
+        </button>
+        
+        {/* Trips */}
+        <NavItem id="trips" icon={Plane} label={t('nav_trips')} isActive={active === 'trips'} onNavigate={onNavigate} />
+        
+        {/* Profile */}
+        <NavItem id="profile" icon={User} label={t('nav_profile')} isActive={active === 'profile'} onNavigate={onNavigate} />
       </div>
     </nav>
   );
