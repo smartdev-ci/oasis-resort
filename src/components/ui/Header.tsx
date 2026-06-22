@@ -32,12 +32,6 @@ export function Header({ onOpenChat, onNavigate }: HeaderProps) {
   }, []);
 
   // Prevent closing when clicking inside dropdown
-  const handleDiscoverClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setDiscoverOpen(!discoverOpen);
-    setLangOpen(false);
-  };
-
   const handleLangClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     setLangOpen(!langOpen);
@@ -64,8 +58,13 @@ export function Header({ onOpenChat, onNavigate }: HeaderProps) {
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-1">
           {/* Discover Dropdown */}
-          <div className="relative" onClick={handleDiscoverClick}>
+          <div 
+            className="relative"
+            onMouseEnter={() => { setDiscoverOpen(true); setLangOpen(false); }}
+            onMouseLeave={() => setDiscoverOpen(false)}
+          >
             <button
+              onClick={() => onNavigate('discover')}
               className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-colors ring-focus ${textBase} ${hoverBase}`}
             >
               {t('nav_discover')}
@@ -163,32 +162,14 @@ export function Header({ onOpenChat, onNavigate }: HeaderProps) {
       {/* Mobile menu */}
       {mobileMenuOpen && (
         <div className="md:hidden mt-2 mx-4 glass rounded-2xl shadow-soft-lg p-3 animate-fade-in-up">
-          {/* Discover dropdown for mobile */}
+          {/* Discover for mobile - navigates directly to discover page */}
           <button
             onClick={() => { onNavigate('discover'); setMobileMenuOpen(false); }}
-            className="w-full text-left px-4 py-3 rounded-xl text-sm font-medium text-primary-500 hover:bg-primary-50 flex items-center justify-between"
+            className="w-full text-left px-4 py-3 rounded-xl text-sm font-medium text-primary-500 hover:bg-primary-50 flex items-center gap-2"
           >
+            <Map className="w-4 h-4 text-primary-400" />
             {t('nav_discover')}
-            <ChevronDown className="w-4 h-4 text-primary-400" />
           </button>
-          <div className="pl-4 space-y-1">
-            <button
-              onClick={() => { onNavigate('discover'); setMobileMenuOpen(false); }}
-              className="w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium text-primary-500 hover:bg-primary-50 flex items-center gap-2"
-            >
-              <Map className="w-4 h-4 text-primary-400" />
-              {t('nav_hotels_residences')}
-            </button>
-            <button
-              onClick={() => { onNavigate('restaurants'); setMobileMenuOpen(false); }}
-              className="w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium text-primary-500 hover:bg-primary-50 flex items-center gap-2"
-            >
-              <svg className="w-4 h-4 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" />
-              </svg>
-              {t('nav_restaurants')}
-            </button>
-          </div>
           <div className="h-px bg-primary-100 my-2" />
           {navItems.map((item) => {
             const Icon = 'icon' in item && item.icon ? item.icon : null;

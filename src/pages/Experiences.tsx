@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Sparkles, Map, Calendar, Star, Heart, ArrowLeft, Users, Camera, Compass, Sun, Moon, TreePalm } from 'lucide-react';
+import { Sparkles, Map, Calendar, Star, Heart, ArrowLeft, Users, Camera, Compass, Sun, Moon, } from 'lucide-react';
 import { useI18n } from '../i18n';
 
 interface ExperiencesProps {
@@ -26,7 +26,7 @@ export function Experiences({ onBack, onBook }: ExperiencesProps) {
 
   const categories = [
     { id: 'all', label: t('experiences_all'), icon: Sparkles },
-    { id: 'culture', label: t('experiences_culture'), icon: TreePalm },
+    { id: 'culture', label: t('experiences_culture'), icon: Camera },
     { id: 'adventure', label: t('experiences_adventure'), icon: Compass },
     { id: 'gastronomy', label: t('experiences_gastronomy'), icon: Users },
     { id: 'wellness', label: t('experiences_wellness'), icon: Sun },

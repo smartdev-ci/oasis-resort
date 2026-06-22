@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Plane, Suitcase, Calendar, MapPin, ArrowLeft, Users, Clock, Star, Heart, Building2, Car, Train, Ship } from 'lucide-react';
+import { Plane, Briefcase, Calendar, MapPin, ArrowLeft, Users, Clock, Star, Heart, Building2, Car, Train, Ship } from 'lucide-react';
 import { useI18n } from '../i18n';
 
 interface TravelProps {
@@ -191,7 +191,7 @@ export function Travel({ onBack }: TravelProps) {
         {/* Stats */}
         <div className="grid grid-cols-3 gap-3 sm:gap-4 mb-8">
           <div className="glass rounded-2xl p-4 text-center border border-primary-100">
-            <Suitcase className="w-8 h-8 text-primary-500 mx-auto mb-2" />
+            <Briefcase className="w-8 h-8 text-primary-500 mx-auto mb-2" />
             <div className="text-2xl font-bold text-primary-600">{currentTrips.length + upcomingTrips.length}</div>
             <div className="text-xs text-primary-400 mt-0.5">{t('travel_stats_upcoming')}</div>
           </div>
@@ -327,7 +327,7 @@ export function Travel({ onBack }: TravelProps) {
         {getTrips().length === 0 && (
           <div className="text-center py-12">
             <div className="w-16 h-16 rounded-2xl bg-primary-50 flex items-center justify-center mx-auto mb-4">
-              <Suitcase className="w-8 h-8 text-primary-300" />
+              <Briefcase className="w-8 h-8 text-primary-300" />
             </div>
             <h3 className="text-lg font-bold text-primary-600 mb-2">{t('travel_no_trips')}</h3>
             <p className="text-primary-400 mb-4">{t('travel_no_trips_sub')}</p>
