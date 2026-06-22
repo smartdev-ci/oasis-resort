@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1A3A2A" />
+  <title>Oasis Resort - Hors Ligne</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #FAF8F3;
+      color: #1A3A2A;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .offline-container {
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .offline-icon {
+      font-size: 80px;
+      margin-bottom: 24px;
+    }
+
+    .offline-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1A3A2A;
+    }
+
+    .offline-subtitle {
+      font-size: 16px;
+      color: #2D6A4F;
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+
+    .offline-features {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 32px;
+      box-shadow: 0 4px 20px rgba(26, 58, 42, 0.08);
+    }
+
+    .offline-feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      font-size: 14px;
+      color: #1A3A2A;
+    }
+
+    .offline-feature:last-child {
+      margin-bottom: 0;
+    }
+
+    .offline-feature-icon {
+      font-size: 20px;
+    }
+
+    .offline-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .offline-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      color: white;
+    }
+
+    .offline-btn-primary {
+      background: #1A3A2A;
+    }
+
+    .offline-btn-primary:hover {
+      background: #2D6A4F;
+    }
+
+    .offline-btn-secondary {
+      background: transparent;
+      color: #1A3A2A;
+      border: 2px solid #40916C;
+    }
+
+    .offline-btn-secondary:hover {
+      background: #40916C;
+      color: white;
+    }
+
+    .offline-tip {
+      margin-top: 32px;
+      padding: 16px;
+      background: rgba(116, 198, 157, 0.1);
+      border-radius: 12px;
+      font-size: 14px;
+      color: #2D6A4F;
+    }
+
+    .offline-tip-icon {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .retry-btn {
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: #40916C;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .retry-btn:hover {
+      background: #2D6A4F;
+    }
+
+    @media (max-width: 400px) {
+      .offline-title {
+        font-size: 20px;
+      }
+      
+      .offline-subtitle {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="offline-container">
+    <div class="offline-icon">🌿</div>
+    
+    <h1 class="offline-title">Vous êtes hors ligne</h1>
+    <p class="offline-subtitle">
+      Oasis Resort fonctionne partiellement sans connexion. Connectez-vous pour accéder à toutes les fonctionnalités.
+    </p>
+
+    <div class="offline-features">
+      <div class="offline-feature">
+        <span class="offline-feature-icon">✅</span>
+        <span>Accès à vos réservations enregistrées</span>
+      </div>
+      <div class="offline-feature">
+        <span class="offline-feature-icon">✅</span>
+        <span>Navigation dans l'application</span>
+      </div>
+      <div class="offline-feature">
+        <span class="offline-feature-icon">✅</span>
+        <span>Historique des recherches récentes</span>
+      </div>
+      <div class="offline-feature">
+        <span class="offline-feature-icon">❌</span>
+        <span>Recherche IA (nécessite une connexion)</span>
+      </div>
+      <div class="offline-feature">
+        <span class="offline-feature-icon">❌</span>
+        <span>Nouveaux hébergements</span>
+      </div>
+    </div>
+
+    <div class="offline-actions">
+      <button class="offline-btn offline-btn-primary" onclick="retryConnection()">
+        <span>🔄</span>
+        Se reconnecter
+      </button>
+      <button class="offline-btn offline-btn-secondary" onclick="viewCached()">
+        <span>📋</span>
+        Voir mes données locales
+      </button>
+    </div>
+
+    <div class="offline-tip">
+      <div class="offline-tip-icon">💡</div>
+      <div>Astuce : Activez le mode avion pour tester le mode hors ligne</div>
+    </div>
+  </div>
+
+  <script>
+    function retryConnection() {
+      if (navigator.onLine) {
+        window.location.reload();
+      } else {
+        alert('Vous êtes toujours hors ligne. Vérifiez votre connexion Internet.');
+      }
+    }
+
+    function viewCached() {
+      // Redirige vers la page d'accueil qui affichera les données cache
+      window.location.href = '/';
+    }
+
+    // Vérifier la connexion périodiquement
+    setInterval(() => {
+      if (navigator.onLine) {
+        window.location.reload();
+      }
+    }, 30000); // Vérifie toutes les 30 secondes
+
+    // Écouter les changements de connexion
+    window.addEventListener('online', () => {
+      window.location.reload();
+    });
+  </script>
+</body>
+</html>

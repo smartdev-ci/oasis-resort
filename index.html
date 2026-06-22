@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/pwa-192x192.png" sizes="192x192" />
+    <link rel="icon" type="image/png" href="/pwa-512x512.png" sizes="512x512" />
+    
+    <!-- Apple Touch Icon (iOS) -->
+    <link rel="apple-touch-icon" href="/pwa-apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/pwa-apple-touch-icon.png" />
+    <link rel="apple-touch-startup-image" href="/splash-apple-640x1136.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" />
+    <link rel="apple-touch-startup-image" href="/splash-apple-750x1334.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" />
+    <link rel="apple-touch-startup-image" href="/splash-apple-1242x2208.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)" />
+    <link rel="apple-touch-startup-image" href="/splash-apple-1125x2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" />
+    <link rel="apple-touch-startup-image" href="/splash-apple-1536x2048.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" />
+    <link rel="apple-touch-startup-image" href="/splash-apple-1668x2224.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" />
+    <link rel="apple-touch-startup-image" href="/splash-apple-2048x2732.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" />
+    
+    <!-- Android/PWA -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    
+    <!-- viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#1A3A2A" />
+    <meta name="msapplication-TileColor" content="#1A3A2A" />
+    
+    <!-- Application Name -->
+    <meta name="application-name" content="Oasis Resort" />
+    <meta name="msapplication-tooltip" content="Votre compagnon IA pour voyager en Afrique" />
+    
+    <!-- iOS Specific -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Oasis Resort" />
+    <meta name="format-detection" content="telephone=no" />
+    
+    <!-- PWA Configuration -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    
+    <!-- Open Graph -->
+    <title>Oasis Resort | Vivez - revez - se loger</title>
+    <meta name="description" content="Votre compagnon IA pour voyager en Afrique. Décrivez votre voyage idéal, nous nous occupons du reste." />
+    <meta property="og:title" content="Oasis Resort | Vivez - revez - se loger" />
+    <meta property="og:description" content="Votre compagnon IA pour voyager en Afrique. Réservez des hôtels, villas et découvertes en Côte d'Ivoire et dans 8 pays africains." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/pwa-512x512.png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Oasis Resort" />
+    <meta name="twitter:description" content="Votre compagnon IA pour voyager en Afrique" />
+    <meta name="twitter:image" content="/pwa-512x512.png" />
+    
+    <!-- Robots -->
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://oasis-resort.ci" />
+    
+    <!-- Service Worker will be registered automatically by vite-plugin-pwa -->
+    <!-- Auto registration is configured in vite.config.ts -->
+    
+    <!-- PWA Install Prompt -->
+    <script>
+      // Detect if app is running as PWA
+      window.isPWA = window.matchMedia('(display-mode: standalone)').matches || 
+                     window.matchMedia('(display-mode: window-controls-overlay)').matches;
+      
+      // Store PWA install prompt
+      let deferredPrompt;
+      
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        
+        // Show install button or banner
+        const installBanner = document.createElement('div');
+        installBanner.id = 'pwa-install-banner';
+        installBanner.style.cssText = `
+          position: fixed;
+          bottom: 20px;
+          left: 20px;
+          right: 20px;
+          background: #1A3A2A;
+          color: white;
+          padding: 16px;
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+          z-index: 10000;
+          box-shadow: 0 4px 20px rgba(26, 58, 42, 0.3);
+        `;
+        
+        installBanner.innerHTML = `
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="font-size: 24px;">📱</span>
+            <div>
+              <strong>Installer Oasis Resort</strong>
+              <div style="font-size: 14px; opacity: 0.9;">Accédez rapidement à votre compagnon de voyage</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button id="pwa-dismiss" style="background: none; border: none; color: white; cursor: pointer; font-size: 16px;">✕</button>
+            <button id="pwa-install" style="background: #40916C; border: none; color: white; padding: 8px 16px; border-radius: 8px; cursor: pointer;">Installer</button>
+          </div>
+        `;
+        
+        document.body.appendChild(installBanner);
+        
+        document.getElementById('pwa-install').addEventListener('click', async () => {
+          deferredPrompt.prompt();
+          const { outcome } = await deferredPrompt.userChoice;
+          if (outcome === 'accepted') {
+            console.log('User accepted PWA install');
+          }
+          installBanner.remove();
+          deferredPrompt = null;
+        });
+        
+        document.getElementById('pwa-dismiss').addEventListener('click', () => {
+          installBanner.remove();
+          deferredPrompt = null;
+        });
+      });
+    </script>
+    
+    <!-- iOS PWA Install Guide -->
+    <script>
+      // Show iOS install instructions
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                   (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      
+      if (isIOS && !window.isPWA) {
+        const iosGuide = document.createElement('div');
+        iosGuide.id = 'ios-install-guide';
+        iosGuide.style.cssText = `
+          position: fixed;
+          bottom: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: #1A3A2A;
+          color: white;
+          padding: 12px 20px;
+          border-radius: 8px;
+          font-size: 14px;
+          z-index: 10000;
+          box-shadow: 0 4px 20px rgba(26, 58, 42, 0.3);
+        `;
+        iosGuide.innerHTML = `📱 Tap "Partager" puis "Sur l'écran d'accueil" pour installer`;
+        
+        setTimeout(() => {
+          document.body.appendChild(iosGuide);
+          setTimeout(() => iosGuide.remove(), 5000);
+        }, 2000);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
