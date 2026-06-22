@@ -46,8 +46,8 @@ export function Header({ onOpenChat, onNavigate }: HeaderProps) {
 
   const navItems = [
     { key: 'nav_tourist_sites', page: 'discover', icon: Map },
-    { key: 'nav_experiences', page: 'home' },
-    { key: 'nav_help', page: 'home' },
+    { key: 'nav_experiences', page: 'experiences' },
+    { key: 'nav_help', page: 'help' },
   ] as const;
 
   const textBase = scrolled ? 'text-primary-500' : 'text-white/90';
@@ -190,16 +190,19 @@ export function Header({ onOpenChat, onNavigate }: HeaderProps) {
             </button>
           </div>
           <div className="h-px bg-primary-100 my-2" />
-          {navItems.map((item) => (
-            <button
-              key={item.key}
-              onClick={() => { onNavigate(item.page); setMobileMenuOpen(false); }}
-              className="w-full text-left px-4 py-3 rounded-xl text-sm font-medium text-primary-500 hover:bg-primary-50 flex items-center gap-2"
-            >
-              {'icon' in item && item.icon ? <item.icon className="w-4 h-4 text-primary-400" /> : null}
-              {t(item.key)}
-            </button>
-          ))}
+          {navItems.map((item) => {
+            const Icon = 'icon' in item && item.icon ? item.icon : null;
+            return (
+              <button
+                key={item.key}
+                onClick={() => { onNavigate(item.page); setMobileMenuOpen(false); }}
+                className="w-full text-left px-4 py-3 rounded-xl text-sm font-medium text-primary-500 hover:bg-primary-50 flex items-center gap-2"
+              >
+                {Icon && <Icon className="w-4 h-4 text-primary-400" />}
+                {t(item.key)}
+              </button>
+            );
+          })}
           <div className="h-px bg-primary-100 my-2" />
           {/* Mobile language switcher */}
           <div className="flex gap-2 px-2 mb-2">

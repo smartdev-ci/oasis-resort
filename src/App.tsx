@@ -18,6 +18,10 @@ import { Discover } from './pages/Discover';
 import { SignIn } from './pages/SignIn';
 import { Register } from './pages/Register';
 import { Restaurants } from './pages/Restaurants';
+import { Help } from './pages/Help';
+import { Experiences } from './pages/Experiences';
+import { Travel } from './pages/Travel';
+import { Profile } from './pages/Profile';
 
 type Page =
   | 'home'
@@ -32,6 +36,8 @@ type Page =
   | 'trips'
   | 'messages'
   | 'profile'
+  | 'help'
+  | 'experiences'
   | 'signin'
   | 'register';
 
@@ -71,11 +77,11 @@ function App() {
   const handleNavigate = useCallback((target: string) => {
     const knownPages: Page[] = [
       'home', 'search', 'details', 'checkout', 'compare',
-      'concierge', 'discover', 'restaurants', 'explore', 'trips', 'messages', 'profile', 'signin', 'register',
+      'concierge', 'discover', 'restaurants', 'explore', 'trips', 'messages', 'profile', 'help', 'experiences', 'signin', 'register',
     ];
     if (knownPages.includes(target as Page)) {
       if (target === 'explore') {
-        setPage('search');
+        setPage('experiences');
       } else {
         setPage(target as Page);
       }
@@ -112,6 +118,22 @@ function App() {
 
       {page === 'restaurants' && (
         <Restaurants onBack={() => setPage('home')} />
+      )}
+
+      {page === 'help' && (
+        <Help onBack={() => setPage('home')} />
+      )}
+
+      {page === 'experiences' && (
+        <Experiences onBack={() => setPage('home')} />
+      )}
+
+      {page === 'trips' && (
+        <Travel onBack={() => setPage('home')} />
+      )}
+
+      {page === 'profile' && (
+        <Profile onBack={() => setPage('home')} onSignOut={() => setPage('home')} />
       )}
 
       {page === 'signin' && (
