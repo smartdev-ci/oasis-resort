@@ -133,14 +133,14 @@ function SmartCalendar() {
     return 'available';
   };
 
-  const getStatusColor = (status: string) => {
+  const getStatusClasses = (status: string) => {
     switch (status) {
-      case 'occupied': return 'bg-red-500';
-      case 'arrival': return 'bg-yellow-500';
-      case 'maintenance': return 'bg-gray-800';
-      case 'today': return 'bg-primary-500';
-      case 'past': return 'bg-primary-100';
-      default: return 'bg-green-500';
+      case 'occupied': return 'bg-red-500 text-white';
+      case 'arrival': return 'bg-yellow-500 text-white';
+      case 'maintenance': return 'bg-gray-800 text-white';
+      case 'today': return 'bg-primary-500 text-white ring-2 ring-primary-600 ring-offset-2';
+      case 'past': return 'bg-primary-100 text-primary-400';
+      default: return 'bg-green-500 text-white';
     }
   };
 
@@ -156,7 +156,7 @@ function SmartCalendar() {
       </div>
       
       {/* Légende */}
-      <div className="flex items-center gap-4 mb-4 text-2xs">
+      <div className="flex items-center gap-4 mb-4 text-2xs flex-wrap">
         <div className="flex items-center gap-1.5">
           <div className="w-2 h-2 rounded-full bg-green-500"></div>
           <span className="text-primary-400">Libre</span>
@@ -186,21 +186,20 @@ function SmartCalendar() {
 
       {/* Jours du mois */}
       <div className="grid grid-cols-7 gap-1">
-        {days.map((day, index) => (
-          <div 
-            key={index}
-            className={`aspect-square rounded-lg flex items-center justify-center text-sm font-medium ${
-              day ? 'cursor-pointer hover:scale-105 transition-transform' : ''
-            }`}
-            style={{ backgroundColor: day ? getStatusColor(getDayStatus(day)) : 'transparent' }}
-          >
-            {day && (
-              <span className={`text-white ${getDayStatus(day) === 'past' ? 'text-primary-400' : ''}`}>
-                {day}
-              </span>
-            )}
-          </div>
-        ))}
+        {days.map((day, index) => {
+          if (!day) return <div key={index} className="aspect-square" />;
+          const status = getDayStatus(day);
+          return (
+            <div 
+              key={index}
+              className={`aspect-square rounded-lg flex items-center justify-center text-sm font-medium cursor-pointer hover:scale-105 transition-transform hover:z-10 hover:shadow-md ${
+                getStatusClasses(status)
+              }`}
+            >
+              {day}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
