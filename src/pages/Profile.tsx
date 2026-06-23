@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { User, Mail, Phone, Home, Calendar, Settings, LogOut, ArrowLeft, Bell, CreditCard, Star, Shield, Heart, Edit2, Camera } from 'lucide-react';
+import { User, Mail, Phone, Home, Calendar, Settings, LogOut, ArrowLeft, Bell, CreditCard, Star, Shield, Heart, Edit2, Camera, Building2 } from 'lucide-react';
 import { useI18n } from '../i18n';
 
 interface ProfileProps {
   onBack?: () => void;
   onSignOut?: () => void;
+  onAdmin?: () => void;
 }
 
 export function Profile({ onBack, onSignOut }: ProfileProps) {
@@ -78,6 +79,7 @@ export function Profile({ onBack, onSignOut }: ProfileProps) {
     { icon: CreditCard, label: t('profile_settings_payment'), action: 'payment' },
     { icon: Shield, label: t('profile_settings_security'), action: 'security' },
     { icon: Settings, label: t('profile_settings_preferences'), action: 'preferences' },
+    { icon: Building2, label: 'Mode Administration', action: 'admin' },
   ];
 
   const formatPrice = (price: number) => {
@@ -376,6 +378,7 @@ export function Profile({ onBack, onSignOut }: ProfileProps) {
                   return (
                     <button
                       key={index}
+                      onClick={() => option.action === 'admin' && onAdmin && onAdmin()}
                       className="w-full flex items-center gap-3 p-3 rounded-xl bg-white border border-primary-50/50 text-left hover:bg-primary-50/50 transition-colors"
                     >
                       <Icon className="w-5 h-5 text-primary-500" />

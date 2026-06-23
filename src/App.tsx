@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { type Property, properties as allProperties } from './data/properties';
 import { Header } from './components/ui/Header';
 import { BottomNav } from './components/ui/BottomNav';
@@ -23,6 +23,7 @@ import { Help } from './pages/Help';
 import { Experiences } from './pages/Experiences';
 import { Travel } from './pages/Travel';
 import { Profile } from './pages/Profile';
+import { Admin } from './pages/Admin';
 
 type Page =
   | 'home'
@@ -40,14 +41,36 @@ type Page =
   | 'help'
   | 'experiences'
   | 'signin'
-  | 'register';
+  | 'register'
+  | 'admin';
 
 function App() {
-  const [page, setPage] = useState<Page>('home');
+  // Synchroniser l'URL avec le state page
+  const getPageFromPath = useCallback((): Page => {
+    const path = window.location.pathname.substring(1) || 'home';
+    const validPages: Page[] = ['home', 'search', 'details', 'checkout', 'compare', 'concierge', 'discover', 'restaurants', 'explore', 'trips', 'messages', 'profile', 'help', 'experiences', 'signin', 'register', 'admin'];
+    return validPages.includes(path as Page) ? (path as Page) : 'home';
+  }, []);
+
+  const [page, setPage] = useState<Page>(getPageFromPath);
   const [chatOpen, setChatOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
   const [compareList, setCompareList] = useState<string[]>([]);
+
+  // Synchroniser l'URL quand page change
+  useEffect(() => {
+    window.history.replaceState({}, '', `/${page}`);
+  }, [page]);
+
+  // Écouter les changements d'URL (boutons avant/arrière)
+  useEffect(() => {
+    const handlePopState = () => {
+      setPage(getPageFromPath());
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [getPageFromPath]);
 
   const handleSearch = useCallback((query: string) => {
     setSearchQuery(query);
@@ -78,7 +101,7 @@ function App() {
   const handleNavigate = useCallback((target: string) => {
     const knownPages: Page[] = [
       'home', 'search', 'details', 'checkout', 'compare',
-      'concierge', 'discover', 'restaurants', 'explore', 'trips', 'messages', 'profile', 'help', 'experiences', 'signin', 'register',
+      'concierge', 'discover', 'restaurants', 'explore', 'trips', 'messages', 'profile', 'help', 'experiences', 'signin', 'register', 'admin',
     ];
     if (knownPages.includes(target as Page)) {
       if (target === 'explore') {
@@ -135,7 +158,11 @@ function App() {
       )}
 
       {page === 'profile' && (
-        <Profile onBack={() => setPage('home')} onSignOut={() => setPage('home')} />
+        <Profile onBack={() => setPage('home')} onSignOut={() => setPage('home')} onAdmin={() => setPage('admin')} />
+      )}
+
+      {page === 'admin' && (
+        <Admin onBack={() => setPage('home')} />
       )}
 
       {page === 'signin' && (

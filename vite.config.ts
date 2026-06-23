@@ -4,6 +4,12 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: {
+    // Pour le routage SPA, servir index.html pour toutes les routes
+    historyApiFallback: {
+      index: '/index.html',
+    },
+  },
   plugins: [
     react(),
     VitePWA({
@@ -105,9 +111,9 @@ export default defineConfig({
       
       // Options de développement
       devOptions: {
-        enabled: false,
+        enabled: true,
         type: 'module',
-        navigateFallback: '/',
+        navigateFallback: '/index.html',
       },
     }),
   ],
