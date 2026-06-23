@@ -18,7 +18,7 @@ export function Logo({ size = 'md', variant = 'default', showText = true }: Logo
       />
       {showText && (
         <span className={`${textSizeMap[size]} font-display font-bold ${textColor} tracking-tight leading-tight`}>
-          Oasis<br className="hidden" /> <span className="hidden sm:inline">Resort</span>
+          Oasis<br className="hidden" /> <span className="hidden sm:inline">Ressort</span>
         </span>
       )}
     </div>

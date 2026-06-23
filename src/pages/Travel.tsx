@@ -65,7 +65,7 @@ export function Travel({ onBack }: TravelProps) {
       endDate: '20 Août 2026',
       status: 'pending',
       travelers: 3,
-      accommodation: t('trip_accommodation_resort'),
+      accommodation: t('trip_accommodation_Ressort'),
       transport: t('trip_transport_flight'),
       budget: 4500000,
     },

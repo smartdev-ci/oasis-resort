@@ -1,6 +1,6 @@
 {
   "name": "Oasis Ressort",
-  "short_name": "OasisResort",
+  "short_name": "OasisRessort",
   "description": "Votre compagnon IA pour voyager en Afrique. Réservez des hôtels, villas et découvrez les meilleurs établissements en Côte d'Ivoire et dans 8 pays africains.",
   "start_url": "/",
   "display": "standalone",
@@ -111,7 +111,7 @@
   "display_override": ["window-controls-overlay", "standalone", "browser"],
   "protocol_handlers": [
     {
-      "protocol": "web+oasisresort",
+      "protocol": "web+oasisRessort",
       "url": "/open?url=%s"
     }
   ],

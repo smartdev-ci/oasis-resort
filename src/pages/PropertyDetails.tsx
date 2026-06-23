@@ -5,8 +5,9 @@ import {
   Wifi, Waves, Dumbbell, Utensils, Car, Shield, ChevronLeft, ChevronRight,
   GitCompare, MessageCircle, Calendar, Users, Minus, Plus,
 } from 'lucide-react';
-import { type Property } from '../data/properties';
+import { type Property, type PropertyImage } from '../data/properties';
 import { useI18n } from '../i18n';
+import Panorama360 from '../components/Panorama360';
 
 interface PropertyDetailsProps {
   property: Property;
@@ -26,6 +27,221 @@ const amenityIcons: Record<string, typeof Wifi> = {
   'Private Pool': Waves, 'Garden': Waves,          'Chef on Request': Utensils,
   'Pet Friendly': Shield,'Rooftop Terrace': Waves,'Hammam': Sparkles,
 };
+
+// 360 Virtual Tour Viewer Component
+interface VirtualTourViewerProps {
+  images: PropertyImage[];
+  currentIndex: number;
+  onNavPrev: () => void;
+  onNavNext: () => void;
+  onSelectImage: (index: number) => void;
+}
+
+function VirtualTourViewer({ images, currentIndex, onNavPrev, onNavNext, onSelectImage }: VirtualTourViewerProps) {
+  const { t } = useI18n();
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [rotateY, setRotateY] = useState(0);
+  const [rotateX, setRotateX] = useState(0);
+  const [scale, setScale] = useState(1);
+  const [startPos, setStartPos] = useState({ x: 0, y: 0 });
+
+  // Reset rotation when image changes
+  useState(() => {
+    setRotateY(0);
+    setRotateX(0);
+    setScale(1);
+  }, [currentIndex]);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    setStartX(e.clientX);
+    setStartPos({ x: rotateY, y: rotateX });
+    e.preventDefault();
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+    const deltaX = e.clientX - startX;
+    const newRotateY = startPos.x + deltaX * 0.3;
+    const newRotateX = startPos.y - (e.clientY - startX) * 0.15;
+    setRotateY(newRotateY);
+    setRotateX(newRotateX);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length === 1) {
+      setIsDragging(true);
+      setStartX(e.touches[0].clientX);
+      setStartPos({ x: rotateY, y: rotateX });
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging || e.touches.length !== 1) return;
+    const deltaX = e.touches[0].clientX - startX;
+    const newRotateY = startPos.x + deltaX * 0.3;
+    const newRotateX = startPos.y - (e.touches[0].clientY - startX) * 0.15;
+    setRotateY(newRotateY);
+    setRotateX(newRotateX);
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
+  const handleWheel = (e: React.WheelEvent) => {
+    e.preventDefault();
+    const delta = e.deltaY > 0 ? -0.1 : 0.1;
+    setScale(Math.min(Math.max(0.8, scale + delta), 2));
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'ArrowLeft') {
+      onNavPrev();
+    } else if (e.key === 'ArrowRight') {
+      onNavNext();
+    }
+  };
+
+  // Check if current image is 360 panorama
+  const currentImage = images[currentIndex];
+  const is360Panorama = currentImage?.type === '360';
+
+  return (
+    <div
+      className={`w-full h-full relative overflow-hidden ${is360Panorama ? 'cursor-grab' : isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+      onMouseDown={is360Panorama ? undefined : handleMouseDown}
+      onMouseMove={is360Panorama ? undefined : handleMouseMove}
+      onMouseUp={is360Panorama ? undefined : handleMouseUp}
+      onMouseLeave={is360Panorama ? undefined : handleMouseUp}
+      onTouchStart={is360Panorama ? undefined : handleTouchStart}
+      onTouchMove={is360Panorama ? undefined : handleTouchMove}
+      onTouchEnd={is360Panorama ? undefined : handleTouchEnd}
+      onWheel={is360Panorama ? undefined : handleWheel}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+    >
+      {/* Main 360 image viewer */}
+      <div className="absolute inset-0">
+        {images[currentIndex]?.type === '360' ? (
+          <Panorama360 panorama={images[currentIndex].url} />
+        ) : (
+          <div
+            className="w-full h-full will-change-transform"
+            style={{
+              transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`,
+              transformStyle: 'preserve-3d',
+              transition: isDragging ? 'none' : 'transform 0.3s ease-out',
+            }}
+          >
+            <img
+              src={images[currentIndex]?.url}
+              alt={images[currentIndex]?.alt || '360 Virtual Tour'}
+              className="w-full h-full object-cover"
+              style={{
+                transform: 'translateZ(0)',
+              }}
+            />
+          </div>
+        )}
+      </div>
+
+      {/* Current view label */}
+      <div className="absolute top-6 left-1/2 -translate-x-1/2 z-10">
+        <div className="px-4 py-2 rounded-full glass-dark text-white text-sm font-medium backdrop-blur-md">
+          {images[currentIndex]?.label || getViewLabel(currentIndex, images.length)}
+        </div>
+      </div>
+
+      {/* Drag to rotate hint - only for photo type */}
+      {!is360Panorama && (
+        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-10">
+          <div className="flex items-center gap-2 px-4 py-2 rounded-full glass-dark text-white/80 text-xs backdrop-blur-md">
+            <Rotate3d className="w-3.5 h-3.5" />
+            <span>{t('details_tour_hint')}</span>
+          </div>
+        </div>
+      )}
+
+      {/* Thumbnails navigation */}
+      <div className="absolute bottom-6 left-6 right-6 z-10">
+        <div className="flex items-center justify-center gap-3">
+          {/* Previous button */}
+          <button
+            onClick={onNavPrev}
+            className="w-10 h-10 rounded-full glass-dark flex items-center justify-center text-white/60 hover:text-white hover:bg-primary-800 transition-all opacity-80 hover:opacity-100"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          {/* Thumbnails */}
+          <div className="flex gap-2 overflow-hidden">
+            {images.slice(0, 5).map((img, idx) => (
+              <button
+                key={idx}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onSelectImage(idx);
+                }}
+                className={`w-12 h-8 rounded-lg overflow-hidden border-2 transition-all relative ${
+                  idx === currentIndex 
+                    ? 'border-gold ring-2 ring-gold/50' 
+                    : 'border-transparent hover:border-white/30'
+                }`}
+              >
+                <img
+                  src={img.url}
+                  alt={img.alt || `Thumbnail ${idx + 1}`}
+                  className="w-full h-full object-cover"
+                />
+                {idx === currentIndex && (
+                  <div className="absolute inset-0 bg-gold/20" />
+                )}
+                {img.type === '360' && (
+                  <div className="absolute top-1 right-1 w-4 h-4 bg-gold/80 rounded-full flex items-center justify-center">
+                    <Rotate3d className="w-2.5 h-2.5 text-primary-900" />
+                  </div>
+                )}
+              </button>
+            ))}
+            {images.length > 5 && (
+              <div className="w-12 h-8 rounded-lg flex items-center justify-center text-white/60 text-xs">
+                +{images.length - 5}
+              </div>
+            )}
+          </div>
+
+          {/* Next button */}
+          <button
+            onClick={onNavNext}
+            className="w-10 h-10 rounded-full glass-dark flex items-center justify-center text-white/60 hover:text-white hover:bg-primary-800 transition-all opacity-80 hover:opacity-100"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+      </div>
+
+      {/* Side navigation arrows */}
+      <button
+        onClick={onNavPrev}
+        className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass-dark flex items-center justify-center text-white/60 hover:text-white hover:bg-primary-800 transition-all opacity-50 hover:opacity-100 z-10"
+      >
+        <ChevronLeft className="w-6 h-6" />
+      </button>
+      <button
+        onClick={onNavNext}
+        className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass-dark flex items-center justify-center text-white/60 hover:text-white hover:bg-primary-800 transition-all opacity-50 hover:opacity-100 z-10"
+      >
+        <ChevronRight className="w-6 h-6" />
+      </button>
+    </div>
+  );
+}
 
 export function PropertyDetails({ property, onBack, onBook, onCompare, onAskAI }: PropertyDetailsProps) {
   const { t } = useI18n();
@@ -352,32 +568,64 @@ export function PropertyDetails({ property, onBack, onBook, onCompare, onAskAI }
 
       {/* Virtual tour modal */}
       {showVirtualTour && (
-        <div className="fixed inset-0 z-[100] bg-primary-900/90 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in" onClick={() => setShowVirtualTour(false)}>
-          <button className="absolute top-6 right-6 w-10 h-10 rounded-full glass-dark flex items-center justify-center text-white hover:bg-primary-800">
+        <div className="fixed inset-0 z-[100] bg-primary-900/95 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in" onClick={() => setShowVirtualTour(false)}>
+          <button className="absolute top-6 right-6 w-10 h-10 rounded-full glass-dark flex items-center justify-center text-white hover:bg-primary-800 ring-focus" onClick={() => setShowVirtualTour(false)}>
             <X className="w-5 h-5" />
           </button>
-          <div className="text-center max-w-2xl" onClick={(e) => e.stopPropagation()}>
-            <div className="w-24 h-24 rounded-3xl glass-emerald flex items-center justify-center mx-auto mb-6 animate-float">
-              <Rotate3d className="w-12 h-12 text-primary-300" />
-            </div>
-            <h2 className="text-3xl font-display font-bold text-white mb-3">{t('details_tour_title')}</h2>
-            <p className="text-white/70 mb-6">{t('details_tour_subtitle')}</p>
-            <div className="relative h-64 sm:h-80 rounded-3xl overflow-hidden glass">
-              <img src={property.images[0].url} alt="Virtual tour" className="w-full h-full object-cover opacity-80" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full glass-dark flex items-center justify-center animate-bounce-subtle">
-                  <Rotate3d className="w-8 h-8 text-white" />
+          
+          <div className="w-full max-w-4xl h-[80vh] max-h-[700px] rounded-3xl bg-primary-900/30 border border-white/10 overflow-hidden relative" onClick={(e) => e.stopPropagation()}>
+            {/* Header */}
+            <div className="absolute top-0 left-0 right-0 z-10 p-6 bg-gradient-to-b from-primary-900/80 to-transparent">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h2 className="text-2xl font-display font-bold text-white">{t('details_tour_title')}</h2>
+                  <p className="text-white/70 text-sm">{t('details_tour_subtitle')}</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="px-3 py-1 rounded-full glass-dark text-white text-xs font-medium">
+                    {t('details_tour_view')} {activeImage + 1} {t('details_tour_of')} {property.images.length}
+                  </span>
                 </div>
               </div>
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white/80 text-xs">
-                <span>{t('details_room_loading')}</span>
-                <span>{t('details_room_counter')}</span>
-              </div>
             </div>
+            
+            {/* Prepare tour images with labels */}
+            {(() => {
+              const getTourViewLabel = (index: number, total: number) => {
+                const labels = [
+                  `${t('room_feature_ocean')}`,
+                  `${t('room_feature_pool')}`,
+                  `${t('room_feature_city')}`,
+                  `${t('room_feature_balcony')}`,
+                  `${t('room_feature_bath')}`,
+                  `${t('room_feature_living')}`,
+                ];
+                return labels[index % labels.length] || `${t('room_standard')} ${index + 1}`;
+              };
+              
+              // Preserve the original images with their type (photo or 360)
+              const tourImages = property.images.map((img, idx) => ({
+                ...img,
+                label: img.alt || getTourViewLabel(idx, property.images.length)
+              }));
+              
+              return (
+                <>
+                  {/* 360 Viewer */}
+                  <VirtualTourViewer
+                    images={tourImages}
+                    currentIndex={activeImage}
+                    onNavPrev={() => setActiveImage((prev) => (prev - 1 + tourImages.length) % tourImages.length)}
+                    onNavNext={() => setActiveImage((prev) => (prev + 1) % tourImages.length)}
+                    onSelectImage={(idx) => setActiveImage(idx)}
+                  />
+                </>
+              );
+            })()}
           </div>
         </div>
       )}
-
+      
       {/* Gallery modal */}
       {galleryOpen && (
         <div className="fixed inset-0 z-[100] bg-primary-900/95 flex items-center justify-center p-4 animate-fade-in" onClick={() => setGalleryOpen(false)}>

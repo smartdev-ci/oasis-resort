@@ -50,7 +50,7 @@ npm install vite-plugin-pwa -D
 ```json
 {
   "name": "Oasis Ressort",
-  "short_name": "OasisResort",
+  "short_name": "OasisRessort",
   "description": "Votre compagnon IA pour voyager en Afrique",
   "start_url": "/",
   "display": "standalone",

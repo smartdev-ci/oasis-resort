@@ -174,7 +174,7 @@ Le fichier `public/manifest.webmanifest` contient toutes les configurations néc
 ```json
 {
   "name": "Oasis Ressort",
-  "short_name": "OasisResort",
+  "short_name": "OasisRessort",
   "description": "Votre compagnon IA pour voyager en Afrique",
   "start_url": "/",
   "display": "standalone",
@@ -249,7 +249,7 @@ Les couleurs sont définies dans :
 ### 2. Noms
 
 - **Name** : "Oasis Ressort" (affiché dans le menu des applications)
-- **Short Name** : "OasisResort" (affiché sous l'icône)
+- **Short Name** : "OasisRessort" (affiché sous l'icône)
 
 ### 3. Mode d'Affichage
 

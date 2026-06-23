@@ -17,9 +17,9 @@ export const translations = {
     nav_tourist_sites: "Sites touristiques",
 
     // Hero
-    hero_title: "Votre Compagnon IA",
-    hero_title_highlight: "pour l'Afrique",
-    hero_subtitle: "Décrivez votre voyage idéal. On s'occupe du reste.",
+    hero_title: "Reservation touristique",
+    hero_title_highlight: "en Côte d'Ivoire",
+    hero_subtitle: "Trouvez, vivez et revenez.",
     hero_placeholder:
       "Trouvez-moi un hôtel en bord de mer à Assinie pour 3 nuits à moins de 100 000 FCFA",
     hero_search: "Rechercher",
@@ -56,7 +56,7 @@ export const translations = {
     discovery_ai_insight: "Aperçu IA :",
     discovery_match: "match",
     discovery_ai_text:
-      "Vous réservez habituellement des hôtels avec piscine et accès à l'aéroport. L'Assinie Beach Resort correspond à 94% de vos habitudes de voyage.",
+      "Vous réservez habituellement des hôtels avec piscine et accès à l'aéroport. L'Assinie Beach Ressort correspond à 94% de vos habitudes de voyage.",
 
     // Smart Map
     map_badge: "Géo-intelligence IA",
@@ -171,6 +171,9 @@ export const translations = {
       "Explorez la chambre sous tous les angles. Faites glisser pour pivoter.",
     details_loading_360: "Chargement de l'expérience 360°...",
     details_rooms_count: "chambres",
+    details_tour_hint: "Glisser pour tourner / Pinch pour zoomer",
+    details_tour_view: "Vue",
+    details_tour_of: "sur",
     details_type: "Type",
     details_ai_badge: "Badge IA",
     details_rating: "Note",
@@ -741,7 +744,7 @@ export const translations = {
     discovery_ai_insight: "AI Insight:",
     discovery_match: "match",
     discovery_ai_text:
-      "You usually book hotels with pools and airport access. Assinie Beach Resort matches 94% of your travel patterns.",
+      "You usually book hotels with pools and airport access. Assinie Beach Ressort matches 94% of your travel patterns.",
 
     // Smart Map
     map_badge: "AI-powered geo-intelligence",
@@ -856,6 +859,9 @@ export const translations = {
       "Explore the room from every angle. Drag to rotate and discover the space.",
     details_loading_360: "Loading 360° experience...",
     details_rooms_count: "rooms",
+    details_tour_hint: "Drag to rotate / Pinch to zoom",
+    details_tour_view: "View",
+    details_tour_of: "of",
     details_type: "Type",
     details_ai_badge: "AI Badge",
     details_rating: "Rating",
@@ -1481,7 +1487,7 @@ export const translations = {
     trip_dest_bali: "Bali, Indonesia",
     trip_accommodation_hotel: "Hotel",
     trip_accommodation_apartment: "Apartment",
-    trip_accommodation_resort: "Resort",
+    trip_accommodation_Ressort: "Ressort",
     trip_accommodation_villa: "Villa",
     trip_transport_flight: "Flight",
     trip_transport_car: "Car",

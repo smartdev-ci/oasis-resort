@@ -1,6 +1,7 @@
 export interface PropertyImage {
   url: string;
   alt: string;
+  type?: "photo" | "360";
 }
 
 export interface ReviewAnalysis {
@@ -18,7 +19,7 @@ export interface ReviewAnalysis {
 export interface Property {
   id: string;
   name: string;
-  type: 'Hotel' | 'Resort' | 'Villa' | 'Apartment' | 'Lodge' | 'Boutique';
+  type: 'Hotel' | 'Ressort' | 'Villa' | 'Apartment' | 'Lodge' | 'Boutique';
   city: string;
   country: string;
   area: string;
@@ -41,7 +42,7 @@ export interface Property {
   reviewAnalysis: ReviewAnalysis;
 }
 
-const img = (url: string, alt: string): PropertyImage => ({ url, alt });
+const img = (url: string, alt: string, type?: "photo" | "360"): PropertyImage => ({ url, alt, type });
 
 export const properties: Property[] = [
   {
@@ -57,9 +58,10 @@ export const properties: Property[] = [
     rating: 4.8,
     reviewCount: 2847,
     images: [
-      img('https://images.pexels.com/photos/2029722/pexels-photo-2029722.jpeg', 'Piscine hôtel'),
-      img('https://images.pexels.com/photos/261101/pexels-photo-261101.jpeg', 'Chambre luxe'),
-      img('https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg', 'Lobby'),
+      img('https://images.pexels.com/photos/2029722/pexels-photo-2029722.jpeg', 'Piscine hôtel', 'photo'),
+      img('https://images.pexels.com/photos/261101/pexels-photo-261101.jpeg', 'Chambre luxe', 'photo'),
+      img('https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg', 'Lobby', 'photo'),
+      img('https://photo-sphere-viewer.js.org/assets/pano-equirectangular.jpg', 'Visite 360° Salon', '360'),
     ],
     aiSummary: 'Idéal pour les voyages d’affaires à Cocody avec vue sur la lagune.',
     aiBadge: 'Top business Abidjan',
@@ -85,8 +87,8 @@ export const properties: Property[] = [
   },
   {
     id: 'p2',
-    name: 'Assinie Beach Resort Abidjan',
-    type: 'Resort',
+    name: 'Assinie Beach Ressort Abidjan',
+    type: 'Ressort',
     city: 'Abidjan',
     country: "Côte d'Ivoire",
     area: 'Assinie (Grand Abidjan)',
@@ -96,9 +98,10 @@ export const properties: Property[] = [
     rating: 4.6,
     reviewCount: 1563,
     images: [
-      img('https://images.pexels.com/photos/1450363/pexels-photo-1450363.jpeg', 'Plage'),
-      img('https://images.pexels.com/photos/1450362/pexels-photo-1450362.jpeg', 'Vue mer'),
-      img('https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg', 'Spa'),
+      img('https://images.pexels.com/photos/1450363/pexels-photo-1450363.jpeg', 'Plage', 'photo'),
+      img('https://images.pexels.com/photos/1450362/pexels-photo-1450362.jpeg', 'Vue mer', 'photo'),
+      img('https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg', 'Spa', 'photo'),
+      img('https://photo-sphere-viewer.js.org/assets/pano-equirectangular-2.jpg', 'Visite 360° Plage', '360'),
     ],
     aiSummary: 'Parfait pour une escapade romantique à Assinie près d’Abidjan.',
     aiBadge: 'Romantique plage',
